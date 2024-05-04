@@ -4,19 +4,18 @@
     </head>
 
     <style>
-
-        #top_banner{
-            height:100px;
-            background-color:cadetblue;
+        #top_banner {
+            height: 100px;
+            background-color: cadetblue;
             color: white;
             padding: 4px;
         }
 
-        #adminbar{
+        #adminbar {
             background-color: white;
-            width:800px;
+            width: 800px;
             height: auto;
-            margin:auto;
+            margin: auto;
             margin-top: 50px;
             padding: 10px;
             padding-top: 50px;
@@ -24,7 +23,7 @@
             font-weight: bold;
         }
 
-        #text{
+        .text-input {
             height: 40px;
             width: 300px;
             border-radius: 4px;
@@ -33,7 +32,7 @@
             font-size: 14px;
         }
 
-        #submit_button{
+        .submit-button {
             width: 300px;
             height: 40px;
             border-radius: 4px;
@@ -42,11 +41,9 @@
             background-color: cadetblue;
             color: white;
         }
-
     </style>
 
-    <body style="font-family: tahoma;background-color: #e9ebee">
-
+    <body style="font-family: tahoma; background-color: #e9ebee">
         <div id="top_banner">
             <div style="font-size: 40px;">Biox</div>
         </div>
@@ -55,78 +52,64 @@
             Biox <br><br>
 
             <span style="font-weight: normal;">General Information</span> <br>
-          <select id="text">
-            <option>Select a school</option>
-            <option>Bridgewood Secondary School</option>
-          </select> <br><br>
-            <input type="text" id="text" placeholder="Victims'/Offenders' Roblox Username"> <br><br>
-            <select id="text">
-                <option>Select a incident type.</option>
+            <select id="school_select" class="text-input">
+                <option>Select a school</option>
+                <option>Bridgewood Secondary School</option>
+            </select> <br><br>
+            <input type="text" id="username_input" class="text-input" placeholder="Victims'/Offenders' Roblox Username"> <br><br>
+            <select id="issue_select" class="text-input">
+                <option>Select an incident type.</option>
                 <option>Safeguarding Issue (Disclosure of abuse)</option>
                 <option>SafeGuarding Issue (Safeguarding incident)</option>
                 <option>Staff Strike</option>
                 <option>Student Exclusion</option>
-            </select>
-
-            <br><br>
-
-            <input type="text" id="text" placeholder="Incident Notes">
-
-            <br><br>
-
-            <input type="submit" id="submit_button" value="Submit Action">
-
+            </select> <br><br>
+            <input type="text" id="notes_input" class="text-input" placeholder="Incident Notes"> <br><br>
+            <input type="submit" id="submit_button" class="submit-button" value="Submit Action">
         </div>
 
         <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('submit_button').addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent the default form submission
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('submit_button').addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent the default form submission
 
-        // Capture the form data
-        var schoolSelect = document.querySelector('select[name="school"]');
-        var usernameInput = document.querySelector('input[name="username"]');
-        var issueSelect = document.querySelector('select[name="issueType"]');
-        var notesInput = document.querySelector('input[name="notes"]');
+                    // Capture the form data
+                    var school = document.getElementById('school_select').value;
+                    var username = document.getElementById('username_input').value;
+                    var issueType = document.getElementById('issue_select').value;
+                    var notes = document.getElementById('notes_input').value;
 
-        var school = schoolSelect.value;
-        var username = usernameInput.value;
-        var issueType = issueSelect.value;
-        var notes = notesInput.value;
+                    // Determine the webhook URL based on the selected school
+                    var webhookUrl = '';
+                    switch(school) {
+                        case 'Bridgewood Secondary School':
+                            webhookUrl = 'https://discord.com/api/webhooks/1236325309637464114/3q-SMPwlq_UIRd9GycqoszZpjGPNPY8IcCRffU7Ndj_3q75lB2nj8hiRXs1cGs7UqB7Q';
+                            break;
+                        // Add other schools and their webhook URLs here
+                    }
 
-        // Determine the webhook URL based on the selected school
-        var webhookUrl = '';
-        switch(school) {
-            case 'Bridgewood Secondary School':
-                webhookUrl = 'https://discord.com/api/webhooks/1236325309637464114/3q-SMPwlq_UIRd9GycqoszZpjGPNPY8IcCRffU7Ndj_3q75lB2nj8hiRXs1cGs7UqB7Q';
-                break;
-            // Add other schools and their webhook URLs here
-        }
+                    // Create the payload to send
+                    var payload = {
+                        content: `School: ${school}\nUsername: ${username}\nIssue Type: ${issueType}\nNotes: ${notes}`
+                    };
 
-        // Create the payload to send
-        var payload = {
-            content: `School: ${school}\nUsername: ${username}\nIssue Type: ${issueType}\nNotes: ${notes}`
-        };
-
-        // Send the data to the Discord webhook
-        fetch(webhookUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        }).then(response => {
-            if(response.ok) {
-                alert('Data submitted successfully!');
-            } else {
-                alert('An error occurred while submitting the data.');
-            }
-        });
-    });
-});
-</script>
-
-        
+                    // Send the data to the Discord webhook
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    }).then(response => {
+                        if(response.ok) {
+                            alert('Data submitted successfully!');
+                        } else {
+                            alert('An error occurred while submitting the data.');
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
+</html>
 
-    </html>
