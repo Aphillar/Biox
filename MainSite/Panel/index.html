@@ -4,52 +4,47 @@
     </head>
 
     <style>
-    /* Top banner styling */
-    #top_banner {
-        height: 100px;
-        background-color: black; /* Black background */
-        color: white; /* Text color changed to white */
-        padding: 4px;
-    }
 
-    /* Admin bar styling */
-    #adminbar {
-        background-color: #A9A9A9; /* Dark grey background */
-        color: white; /* Text color changed to white */
-        width: 800px;
-        height: auto;
-        margin: auto;
-        margin-top: 50px;
-        padding: 10px;
-        padding-top: 50px;
-        text-align: center;
-        font-weight: bold;
-    }
+        #top_banner{
+            height:100px;
+            background-color: black;
+            color: white;
+            padding: 4px;
+        }
 
-    /* Text input styling */
-    .text-input {
-        background-color: white; /* Background color changed to white */
-        color: white; /* Text color changed to white */
-        height: 40px;
-        width: 300px;
-        border-radius: 4px;
-        border: solid 1px black; /* Border color changed to black */
-        padding: 4px;
-        font-size: 14px;
-    }
+        #adminbar{
+            background-color: #ccc;
+            width:800px;
+            height: auto;
+            margin:auto;
+            margin-top: 50px;
+            padding: 10px;
+            padding-top: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
 
-    /* Submit button styling */
-    #submit_button {
-        width: 300px;
-        height: 40px;
-        border-radius: 4px;
-        font-weight: bold;
-        border: none;
-        background-color: black; /* Background color remains black */
-        color: white; /* Text color remains white */
-    }
-</style>
+        #text{
+            color: white;
+            height: 40px;
+            width: 300px;
+            border-radius: 4px;
+            border: solid 1px white;
+            padding: 4px;
+            font-size: 14px;
+        }
 
+        #submit_button{
+            width: 300px;
+            height: 40px;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+    </style>
 
     <body style="font-family: tahoma;background-color: #ccc">
 
@@ -61,17 +56,17 @@
             ATL Learning Trsut - Biox Panle <br><br>
 
             <span style="font-weight: normal;">School</span> <br>
-          <select id="text" style="widht: 300px;">
+          <select id="text">
             <option>None</option>
             <option>Bridgewood Secondary School</option>
           </select> <br><br>
-            <input type="text" id="text" placeholder="Victims' Username" style="widht: 300px;"> <br><br>
-            <input type="text" id="text" placeholder="Date of issue" style="widht: 300px;"> <br><br> 
+            <input type="text" id="text" placeholder="Victims' Username"> <br><br>
+            <input type="text" id="text" placeholder="Date of issue"> <br><br> 
 
             <br><br>
 
             <span style="font-weight: normal;">Type of issue:</span><br>
-            <select id="text" style="widht: 300px;">
+            <select id="text">
                 <option>None</option>
                 <option>Safeguarding Issue (Disclosure of abuse)</option>
                 <option>Safeguarding Issue (Discoloure of a safeguarding issue)</option>
@@ -92,3 +87,4 @@
     </body>
 
     </html>
+
