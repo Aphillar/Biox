@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>InfiniteFeed | Admin Panel</title>
+    </head>
+
+    <style>
+
+        #top_banner{
+            height:100px;
+            background-color:cadetblue;
+            color: white;
+            padding: 4px;
+        }
+
+        #adminbar{
+            background-color: white;
+            width:800px;
+            height: auto;
+            margin:auto;
+            margin-top: 50px;
+            padding: 10px;
+            padding-top: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #text{
+            height: 40px;
+            width: 300px;
+            border-radius: 4px;
+            border: solid 1px #ccc;
+            padding: 4px;
+            font-size: 14px;
+        }
+
+        #submit_button{
+            width: 300px;
+            height: 40px;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            background-color: cadetblue;
+            color: white;
+        }
+
+    </style>
+
+    <body style="font-family: tahoma;background-color: #e9ebee">
+
+        <div id="top_banner">
+            <div style="font-size: 40px;">InfiniteFeed Admin</div>
+        </div>
+
+        <div id="adminbar">
+            Administration Panel <br><br>
+
+            <span style="font-weight: normal;">User Information:</span> <br>
+            <input type="text" id="text" placeholder="Offender's First Name"> <br><br>
+            <input type="text" id="text" placeholder="Offender's Account ID"> <br><br>
+
+            <span style="font-weight: normal;">Account State Overide:</span><br>
+            <select id="text">
+                <option>None</option>
+                <option>Remind</option>
+                <option>Warning</option>
+                <option>Ban 1 day</option>
+                <option>Ban 3 days</option>
+                <option>Ban 7 days</option>
+                <option>Ban 14 days</option>
+                <option>Delete Account</option>
+            </select>
+
+            <br><br>
+
+            <span style="font-weight: normal;">Ban Reason:</span><br>
+            <select id="text">
+                <option>Bullying Members</option>
+                <option>Discrimination</option>
+                <option>Racism</option>
+                <option>Hate Speech</option>
+                <option>Copyright</option>
+                <option>Harrasement</option>
+                <option>Grooming a minior</option>
+                <option>Sexualizing minors</option>
+                <option>Sharing, requesting, or discussing child sexual exploitation material</option>
+                <option>Terrorism and Violent Extremism</option>
+                <option>Regular Threats</option>
+                <option>Death Threats</option>
+                <option>Sharing private information of an individual</option>
+                <option>Suicide, self harm, and harmful behaviour</option>
+                <option>Slurs</option>
+                <option>Harmful off-platform speech or behaviour</option>
+                <option>Real-world sensitive events</option>
+                <option>Violent content and gore</option>
+                <option>Illegal goods and activity</option>
+                <option>Scamming of an individual</option>
+                <option>Spamming</option>
+                <option>Hacking and exploiting of our site</option>
+                <option>Impersonation of a administrator</option>
+            </select>
+
+            <br><br>
+
+            <input type="text" id="text" placeholder="Moderator's Note">
+
+            <br><br>
+
+            <input type="submit" id="submit_button" value="Submit Action">
+
+        </div>
+
+    </body>
+
+    </html>
