@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>Biox</title>
+    </head>
+
+    <style>
+        #top_banner {
+            height: 100px;
+            background-color: cadetblue;
+            color: white;
+            padding: 4px;
+        }
+
+        #adminbar {
+            background-color: white;
+            width: 800px;
+            height: auto;
+            margin: auto;
+            margin-top: 50px;
+            padding: 10px;
+            padding-top: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .text-input {
+            height: 40px;
+            width: 300px;
+            border-radius: 4px;
+            border: solid 1px #ccc;
+            padding: 4px;
+            font-size: 14px;
+        }
+
+        .submit-button {
+            width: 300px;
+            height: 40px;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            background-color: cadetblue;
+            color: white;
+        }
+    </style>
+
+    <body style="font-family: tahoma; background-color: #e9ebee">
+        <div id="top_banner">
+            <div style="font-size: 40px;">Biox</div>
+        </div>
+
+        <div id="adminbar">
+            Biox <br><br>
+
+            <span style="font-weight: normal;">Incident Information</span> <br>
+            <select id="school_select" class="text-input">
+                <option>Select a school</option>
+                <option>Bridgewood Secondary School</option>
+                <option>Southbrook Academy</option>
+                <option>Alder Academy</option>
+            </select> <br><br>
+            <input type="text" id="reporter_username_input" class="text-input" placeholder="Your Roblox Username"> <br><br>
+            <input type="text" id="username_input" class="text-input" placeholder="Victims'/Offenders' Roblox Username"> <br><br>
+            <select id="issue_select" class="text-input">
+                <option>Select an incident type.</option>
+                <option>Safeguarding Issue (Disclosure of abuse)</option>
+                <option>SafeGuarding Issue (Safeguarding incident)</option>
+                <option>Staff Strike</option>
+                <option>Student Exclusion</option>
+            </select> <br><br>
+            <input type="text" id="notes_input" class="text-input" placeholder="Incident Notes"> <br><br>
+            <input type="submit" id="submit_button" class="submit-button" value="Submit Action">
+        </div>
+
+        <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var accessCodes = {
+        'Bridgewood Secondary School': '1245', // Replace with the actual access code
+        'Southbrook Academy': '6969', // Replace with the actual access code
+        'Alder Academy': '2711'
+    };
+
+    document.getElementById('submit_button').addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        var school = document.getElementById('school_select').value;
+        var victimUsername = document.getElementById('username_input').value;
+        var issueType = document.getElementById('issue_select').value;
+        var notes = document.getElementById('notes_input').value;
+        var reporterUsername = document.getElementById('reporter_username_input').value;
+
+        var enteredAccessCode = prompt('Please enter the access code:');
+
+        if(enteredAccessCode !== null && accessCodes[school] && enteredAccessCode === accessCodes[school]) {
+            var webhookUrl = '';
+            switch(school) {
+                case 'Bridgewood Secondary School':
+                    webhookUrl = 'https://discord.com/api/webhooks/1236325309637464114/3q-SMPwlq_UIRd9GycqoszZpjGPNPY8IcCRffU7Ndj_3q75lB2nj8hiRXs1cGs7UqB7Q';
+                    break;
+                case 'Southbrook Academy':
+                    webhookUrl = 'https://discord.com/api/webhooks/1236334627065565325/mUY6uTdXksxcX1L0Bu4-uoTSLm9YjDELvj1D6qF_tGk2khLQQapO_cfqL2i1UNc6VgL_';
+                    break;
+                case 'Alder Academy':
+                    webhookUrl = 'https://discord.com/api/webhooks/1236604076221792297/VEQni171YO82bM-CxwM_HQ3nRDT_qBKareKmueUOstrC9SRQWYJHxF3BbR7b8EtMto3Q'
+            }
+
+            var payload = {
+                embeds: [{
+                    title: "New Report Submitted",
+                    color: 5814783,
+                    fields: [
+                        { name: "School", value: school, inline: true },
+                        { name: "Victim's/Offender's Username", value: victimUsername, inline: true },
+                        { name: "Reporter's Username", value: reporterUsername, inline: true },
+                        { name: "Issue Type", value: issueType, inline: false },
+                        { name: "Notes", value: notes, inline: false }
+                    ],
+                    footer: {
+                        text: "Report System"
+                    }
+                }]
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if(response.ok) {
+                    alert('Data submitted successfully!');
+                } else {
+                    alert('An error occurred while submitting the data.');
+                }
+            });
+        } else {
+            alert('Incorrect access code or submission cancelled.');
+        }
+    });
+});
+    </script>
+    </body>
+</html>
