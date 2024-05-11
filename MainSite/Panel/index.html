@@ -55,7 +55,6 @@
             <select id="school_select" class="text-input">
                 <option>Select a school</option>
                 <option>Bridgewood Secondary School</option>
-                <option>Alder Academy</option>
             </select> <br><br>
             <input type="text" id="reporter_username_input" class="text-input" placeholder="Your Roblox Username"> <br><br>
             <input type="text" id="username_input" class="text-input" placeholder="Victims'/Offenders' Roblox Username"> <br><br>
@@ -75,7 +74,6 @@
   document.addEventListener('DOMContentLoaded', function() {
     var accessCodes = {
         'Bridgewood Secondary School': '1245', // Replace with the actual access code
-        'Alder Academy': '2711'
     };
 
     document.getElementById('submit_button').addEventListener('click', function(e) {
@@ -95,8 +93,6 @@
                 case 'Bridgewood Secondary School':
                     webhookUrl = 'https://discord.com/api/webhooks/1236325309637464114/3q-SMPwlq_UIRd9GycqoszZpjGPNPY8IcCRffU7Ndj_3q75lB2nj8hiRXs1cGs7UqB7Q';
                     break;
-                case 'Alder Academy':
-                    webhookUrl = 'https://discord.com/api/webhooks/1236604076221792297/VEQni171YO82bM-CxwM_HQ3nRDT_qBKareKmueUOstrC9SRQWYJHxF3BbR7b8EtMto3Q'
             }
 
             var payload = {
